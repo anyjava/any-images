@@ -2,15 +2,14 @@ import Woowahan from 'woowahan';
 import LayoutView from './layouts/layout';
 import HomeView from './views/home';
 import PostsView from './views/posts';
-import Posts from './reducers/posts';
+import * as reducers from './reducers';
 import './css/main.css';
 
 global.$ = global.jQuery = Woowahan.$;
 
-
 const app = new Woowahan();
 
-app.use(Posts);
+app.use(reducers);
 
 app.use(Woowahan.Layout('#app', LayoutView));
 
