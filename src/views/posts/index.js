@@ -19,12 +19,13 @@ export default Woowahan.CollectionView.create('PostView', {
         this.dispatch(Woowahan.Action.create(FETCH_POSTS), this.fetchPosts);
     },
     fetchPosts(data) {
-        this.reload(data.data);
+        console.log(data);
+        this.reload(data.content);
 
         var pageinfo = {
-            currentPage: data.pageNumber,
-                total: data.total,
-            numOfRows: 10,
+            currentPage: data.number,
+                total: data.totalElements,
+            numOfRows: data.size,
         };
         this.updateView('.pager-container', Pager, pageinfo);
     }
