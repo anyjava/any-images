@@ -43,6 +43,7 @@ export default Woowahan.View.create('Pager', {
     onPaging(event) {
         this.dispatch(Woowahan.Event.create('paging', +$(event.currentTarget).data('page')));
 
+        console.log('paging event');
         return false;
     }
 });

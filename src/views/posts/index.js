@@ -10,6 +10,10 @@ export default Woowahan.CollectionView.create('PostView', {
     rowView: RowItem,
     rowContainer: '#items',
 
+    events: {
+        '@paging': 'onPaging',
+    },
+
     initialize(options) {
         this.super();
     },
@@ -28,5 +32,10 @@ export default Woowahan.CollectionView.create('PostView', {
             numOfRows: data.size,
         };
         this.updateView('.pager-container', Pager, pageinfo);
+    },
+
+    onPaging(data) {
+        console.log(data);
     }
+
 });
