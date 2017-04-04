@@ -17,7 +17,7 @@ app.start({
   url: '/',
   container: '.contents',
   layout: 'LayoutView',
-  view: HomeView,
+  view: PostsView,
   pages: [
   	{ url: '/posts', view: PostsView },
   ]

@@ -20,7 +20,11 @@ export default Woowahan.CollectionView.create('PostView', {
     viewWillMount() {
     },
     viewDidMount() {
-        this.dispatch(Woowahan.Action.create(FETCH_POSTS), this.fetchPosts);
+        this.onSearch(0);
+    },
+
+    onSearch(page) {
+        this.dispatch(Woowahan.Action.create(FETCH_POSTS, {page: page}), this.fetchPosts);
     },
     fetchPosts(data) {
         console.log(data);
@@ -36,6 +40,7 @@ export default Woowahan.CollectionView.create('PostView', {
 
     onPaging(data) {
         console.log(data);
+        this.onSearch(data);
     }
 
 });

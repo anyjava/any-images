@@ -23,25 +23,25 @@ export default Woowahan.View.create('Pager', {
 
         const totalPage = Math.ceil(total / numOfRows);
 
-        let start = parseInt((currentPage - 1) / 10) * 10;
+        let start = parseInt(currentPage / 10) * 10;
         let count = Math.min(10, totalPage - start);
 
         renderData.prevPage = start - 9;
         renderData.nextPage = start + 11;
 
         const numbers = Array.from({ length: count }, () => {
-            return { num: ++start, active: currentPage == start }
+            return { num: ++start, active: currentPage + 1 === start }
         });
 
         renderData.prev = currentPage > 10;
         renderData.numbers = numbers;
-        renderData.next = count == 10;
+        renderData.next = count === 10;
 
         return renderData;
     },
 
     onPaging(event) {
-        this.dispatch(Woowahan.Event.create('paging', +$(event.currentTarget).data('page')));
+        this.dispatch(Woowahan.Event.create('paging', +$(event.currentTarget).data('page')-1));
 
         console.log('paging event');
         return false;

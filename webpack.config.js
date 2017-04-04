@@ -1,13 +1,14 @@
 const path = require('path');
 const webpack = require("webpack");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const WebpackMd5Hash = require('webpack-md5-hash');
 
 module.exports = {
   devtool: 'eval', //'cheap-module-source-map',
   entry: ['./src/main'],
   output: {
     path: path.join(__dirname, 'dist'),
-    filename: 'bundle.js',
+    filename: 'bundle.[hash].js',
   },
   plugins: [
     new webpack.optimize.OccurrenceOrderPlugin(),
@@ -25,6 +26,7 @@ module.exports = {
       template: './src/index.html',
     }),
     new webpack.HotModuleReplacementPlugin(),
+    new WebpackMd5Hash(),
   ],
   module: {
     loaders: [

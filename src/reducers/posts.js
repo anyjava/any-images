@@ -6,7 +6,7 @@ export const fetchPost = Woowahan.Reducer.create(FETCH_POSTS, function(options) 
 		this.finish(response);
   };
 
-  this.getData('http://13.124.106.31:8080/articles');
+  this.getData('http://13.124.106.31:8080/articles?size=20&page=' + options.page);
 });
 
 
