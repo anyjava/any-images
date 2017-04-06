@@ -26,6 +26,10 @@ export default Woowahan.ItemView.create('RowItem', {
         console.log(renderData);
     },
 
+    viewDidMount() {
+        $(this.refs.left).hide();
+    },
+
     onSelectedRow(event, trigger) {
         trigger({ id: this.getModel('id') });
     },
@@ -35,6 +39,8 @@ export default Woowahan.ItemView.create('RowItem', {
             console.log('left');
             this.currentIndex--;
             this.replaceImage(this.images[this.currentIndex-1].url);
+            $(this.refs.right).show();
+            if (this.currentIndex === 1) $(this.refs.left).hide();
         }
     },
 
@@ -43,6 +49,8 @@ export default Woowahan.ItemView.create('RowItem', {
             console.log('right');
             this.replaceImage(this.images[this.currentIndex].url);
             this.currentIndex++;
+            $(this.refs.left).show();
+            if (this.currentIndex === this.totalSize) $(this.refs.right).hide();
         }
     },
 
