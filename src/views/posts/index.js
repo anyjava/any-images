@@ -36,6 +36,7 @@ export default Woowahan.CollectionView.create('PostView', {
             numOfRows: data.size,
         };
         this.updateView('.pager-container', Pager, pageinfo);
+        window.scrollTo(0,0);
     },
 
     onPaging(data) {
