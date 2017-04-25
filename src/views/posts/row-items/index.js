@@ -71,10 +71,12 @@ export default Woowahan.ItemView.create('RowItem', { tagName: 'div',
     },
 
     notiResult(data) {
-        console.log($('#noti'));
         $("#noti").addClass('in alert');
         setTimeout(function () {
             $("#noti").removeClass('in alert');
         }, 2000);
+        let m = this.getModel();
+        m.countOfFavorite++;
+        this.setModel(m);
     },
 });
