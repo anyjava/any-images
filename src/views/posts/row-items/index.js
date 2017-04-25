@@ -1,8 +1,8 @@
 import Woowahan from 'woowahan';
 import Template from './index.hbs';
+import { ADD_FAVORITE } from '../../../actions';
 
-export default Woowahan.ItemView.create('RowItem', {
-    tagName: 'div',
+export default Woowahan.ItemView.create('RowItem', { tagName: 'div',
     template: Template,
 
     currentIndex: 1,
@@ -37,6 +37,7 @@ export default Woowahan.ItemView.create('RowItem', {
     onLeft(e) {
         if (this.currentIndex > 1) {
             console.log('left');
+            this.showLoadingImage();
             this.currentIndex--;
             this.replaceImage(this.images[this.currentIndex-1].url);
             $(this.refs.right).show();
@@ -47,6 +48,7 @@ export default Woowahan.ItemView.create('RowItem', {
     onRight(e) {
         if (this.totalSize > this.currentIndex) {
             console.log('right');
+            this.showLoadingImage();
             this.replaceImage(this.images[this.currentIndex].url);
             this.currentIndex++;
             $(this.refs.left).show();
@@ -54,12 +56,25 @@ export default Woowahan.ItemView.create('RowItem', {
         }
     },
 
+    showLoadingImage(el) {
+        this.replaceImage("apple_loading.gif");
+    },
+
     replaceImage(url) {
         console.log(url);
         this.refs.img.src = this.imageHost + url;
     },
 
-    onFavorite() {
-        alert('comming soon...');
+    onFavorite(e) {
+        const id = $(e.currentTarget).data('id');
+        this.dispatch(Woowahan.Action.create(ADD_FAVORITE, {id: id, data: {}}), this.notiResult);
+    },
+
+    notiResult(data) {
+        console.log($('#noti'));
+        $("#noti").addClass('in alert');
+        setTimeout(function () {
+            $("#noti").removeClass('in alert');
+        }, 2000);
     },
 });

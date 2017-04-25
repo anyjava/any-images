@@ -12,6 +12,7 @@ export default Woowahan.CollectionView.create('PostView', {
 
     events: {
         '@paging': 'onPaging',
+        'click .close': 'closeNoti',
     },
 
     initialize(options) {
@@ -42,6 +43,11 @@ export default Woowahan.CollectionView.create('PostView', {
     onPaging(data) {
         console.log(data);
         this.onSearch(data);
+    },
+
+    closeNoti(e) {
+        $(e.currentTarget).parent().removeClass('in alert');
     }
+
 
 });

@@ -13,8 +13,8 @@
             <h3 data-role="bind" data-name="subject"></h3>
             <p>조회수 : <span data-role="bind" data-name="hit"></span></p>
             <p><a href="{{url}}" class="btn btn-primary">원본글</a>
-            <button type="button" class="btn btn-default btn-md btn-favorite">
-                <span class="glyphicon glyphicon glyphicon-thumbs-up text-primary" aria-hidden="true"></span> Like
+            <button type="button" class="btn btn-default btn-md btn-favorite" data-id="{{id}}">
+                <span class="glyphicon glyphicon glyphicon-thumbs-up text-primary" aria-hidden="true"></span> Like <span class="badge badge-primary">{{countOfFavorite}}</span>
             </button>
         </div>
     </div>
